@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meelad Fest — Results</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#f4f7f4;
+  --cream-deep:#e8eee8;
+  --white:#ffffff;
+  --ink:#1a2b25;
+  --ink-dim:#4a6358;
+  --gold:#d4af37;
+  --gold-light:#ebd07d;
+  --gold-dim:#a68521;
+  --gold-wash:rgba(212,175,55,0.12);
+  --teal:#0f4c3a;
+  --teal-light:#1b7057;
+  --teal-dim:#072b20;
+  --teal-wash:rgba(15,76,58,0.08);
+  --maroon:#8c3232;
+  --maroon-light:#ba4c4c;
+  --line: rgba(15,76,58,0.12);
+  --shadow: 0 24px 60px rgba(15,76,58,0.08);
+  --radius: 16px;
+  --display: 'Outfit', sans-serif;
+  --body: 'Plus Jakarta Sans', sans-serif;
+  --mono: 'Fira Code', monospace;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background-color: var(--cream);
+  background-image: 
+    radial-gradient(circle at 0% 0%, rgba(212,175,55,0.06) 0%, transparent 50%),
+    radial-gradient(circle at 100% 100%, rgba(15,76,58,0.08) 0%, transparent 60%),
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230f4c3a' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  color:var(--ink);
+  font-family:var(--body);
+  min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit; text-decoration:none;}
+::selection{background:var(--gold-wash); color:var(--teal-dim);}
+:focus-visible{outline:2px solid var(--gold); outline-offset:3px;}
+
+/* ---------- utility ---------- */
+.wrap{max-width:1180px; margin:0 auto; padding:0 28px;}
+.eyebrow{
+  font-family:var(--mono); font-size:11.5px; letter-spacing:.22em; text-transform:uppercase;
+  color:var(--gold-dim); display:flex; align-items:center; gap:10px;
+}
+.eyebrow .dash{width:26px; height:1px; background:var(--gold-dim); display:inline-block;}
+h1,h2,h3{font-family:var(--display); font-weight:700; margin:0; color:var(--ink);}
+.btn{
+  font-family:var(--body); font-weight:600; font-size:14.5px; letter-spacing:.02em;
+  padding:14px 26px; border-radius:999px; border:1px solid var(--line); cursor:pointer;
+  background:rgba(255,255,255,0.7); backdrop-filter:blur(4px); color:var(--teal-dim); transition:all .3s cubic-bezier(0.4, 0, 0.2, 1); display:inline-flex; align-items:center; gap:8px;
+  box-shadow: 0 4px 12px rgba(15,76,58,0.04);
+}
+.btn:hover{background:var(--teal-wash); border-color:var(--teal); transform:translateY(-2px); box-shadow: 0 6px 16px rgba(15,76,58,0.08);}
+.btn.primary{
+  background:linear-gradient(135deg,var(--teal),var(--teal-dim)); color:var(--white); 
+  border:1px solid rgba(255,255,255,0.1); 
+  box-shadow:0 12px 24px rgba(7,43,32,0.25), inset 0 1px 1px rgba(255,255,255,0.2);
+}
+.btn.primary:hover{
+  background:linear-gradient(135deg,var(--teal-light),var(--teal)); 
+  transform:translateY(-2px); box-shadow:0 16px 32px rgba(7,43,32,0.3), inset 0 1px 1px rgba(255,255,255,0.3);
+}
+.btn.danger{border-color:rgba(140,50,50,0.35); color:var(--maroon); background:rgba(140,50,50,0.04);}
+.btn.danger:hover{background:rgba(140,50,50,0.08); border-color:var(--maroon);}
+.btn.small{padding:9px 18px; font-size:13px;}
+.btn:disabled{opacity:.5; cursor:not-allowed; transform:none !important; box-shadow:none !important;}
+input,select,textarea{
+  font-family:var(--body); background:rgba(255,255,255,0.8); border:1px solid var(--line); color:var(--ink);
+  padding:14px 16px; border-radius:12px; font-size:15px; width:100%; transition:all .2s;
+}
+.password-field{
+  position:relative;
+}
+.password-field input{
+  padding-right:48px;
+}
+.password-toggle{
+  position:absolute; top:50%; right:14px; transform:translateY(-50%);
+  width:32px; height:32px; border:none; background:none; cursor:pointer;
+  display:flex; align-items:center; justify-content:center; color:var(--ink-dim);
+  border-radius:50%; transition:background .2s, color .2s;
+}
+.password-toggle:hover{background:rgba(15,76,58,0.08); color:var(--teal-dim);}
+input:focus,select:focus,textarea:focus{background:var(--white); border-color:var(--gold); outline:none; box-shadow:0 0 0 3px var(--gold-wash);}
+input::placeholder,textarea::placeholder{color:var(--ink-dim); opacity:0.6;}
+label{font-size:13px; color:var(--teal-dim); letter-spacing:.04em; display:block; margin-bottom:8px; font-family:var(--body); font-weight:600; text-transform:uppercase;}
+.field{margin-bottom:20px;}
+.card{
+  background:rgba(255,255,255,0.85); backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,0.5); border-radius:var(--radius); padding:32px;
+  box-shadow:var(--shadow); position:relative; overflow:hidden;
+}
+.card::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg,var(--gold),var(--gold-light)); opacity:0; transition:opacity .3s; }
+.card:hover::before { opacity:1; }
+.pill{font-family:var(--mono); font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; padding:6px 14px; border-radius:999px; border:1px solid var(--gold-light); color:var(--gold-dim); background:var(--gold-wash);}
+.pill.gold-fill{background:linear-gradient(135deg,var(--gold-light),var(--gold)); color:var(--ink); border:none; font-weight:700; box-shadow:0 4px 12px rgba(212,175,55,0.3);}
+.rank-1{color:var(--gold-dim); font-weight:600;} .rank-2{color:var(--teal);} .rank-3{color:var(--maroon-light);}
+::-webkit-scrollbar{width:9px; height:9px;}
+::-webkit-scrollbar-thumb{background:var(--gold-dim); border-radius:6px;}
+::-webkit-scrollbar-track{background:transparent;}
+
+/* ---------- star / khatam signature (REMOVED) ---------- */
+
+/* ---------- top nav ---------- */
+header{
+  position:sticky; top:0; z-index:50;
+  background:rgba(244,247,244,0.75); backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(15,76,58,0.08);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+}
+.nav{display:flex; align-items:center; justify-content:space-between; padding:16px 0;}
+.brand{display:flex; align-items:center; gap:12px; font-family:var(--display); font-size:26px; font-weight:700;}
+.brand small{display:block; font-family:var(--body); font-size:12px; letter-spacing:.16em; color:var(--gold-dim); font-weight:600; text-transform:uppercase; margin-top:2px;}
+
+/* ---------- hero ---------- */
+.hero{padding:90px 0 70px; position:relative; overflow:hidden;}
+.hero-grid{display:grid; grid-template-columns:1fr; gap:40px; align-items:center; text-align:center; max-width:800px; margin:0 auto;}
+.hero h1{font-size:42px; line-height:1.15; margin:20px 0 24px; letter-spacing:-0.02em;}
+.hero h1 em{font-style:normal; color:var(--teal); font-weight:800; background:linear-gradient(135deg, var(--teal-dim), var(--teal-light)); -webkit-background-clip:text; -webkit-text-fill-color:transparent;}
+.hero p.lead{font-size:18px; color:var(--ink-dim); line-height:1.7; margin-bottom:36px; margin-left:auto; margin-right:auto;}
+.hero-actions{display:flex; gap:16px; flex-wrap:wrap; justify-content:center;}
+.hero-star-wrap{display:none;}
+.status-banner{
+  margin-top:46px; display:flex; gap:40px; flex-wrap:wrap; padding-top:36px; border-top:1px solid rgba(15,76,58,0.1); justify-content:center;
+}
+.stat b{font-family:var(--display); font-size:32px; color:var(--teal); display:block; font-weight:800; line-height:1;}
+.stat span{font-size:12px; color:var(--gold-dim); font-family:var(--body); font-weight:600; text-transform:uppercase; letter-spacing:.1em; margin-top:8px; display:block;}
+
+section.block{padding:54px 0; border-top:1px solid var(--line);}
+.block-head{display:flex; align-items:flex-end; justify-content:space-between; gap:20px; margin-bottom:30px; flex-wrap:wrap;}
+.block-head h2{font-size:29px; margin-top:10px;}
+
+/* filter bar */
+.filters{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:22px;}
+.chip{
+  font-family:var(--mono); font-size:12px; letter-spacing:.04em; padding:8px 15px; border-radius:999px;
+  border:1px solid var(--line); background:var(--white); color:var(--ink-dim); cursor:pointer; transition:.2s;
+}
+.chip.active,.chip:hover{border-color:var(--teal); color:var(--teal-dim); background:var(--teal-wash);}
+
+/* results board */
+.results-table{width:100%; border-collapse:separate; border-spacing:0;}
+.results-table th{
+  text-align:left; font-family:var(--body); font-weight:700; font-size:12px; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--teal-dim); padding:16px 20px; border-bottom:2px solid var(--line); background:rgba(255,255,255,0.4);
+}
+.results-table td{padding:18px 20px; border-bottom:1px solid var(--line); font-size:15px; vertical-align:top; background:var(--white); transition:background .2s;}
+.results-table tr:hover td{background:var(--cream);}
+.results-table tr:first-child td:first-child{border-top-left-radius:12px;}
+.results-table tr:first-child td:last-child{border-top-right-radius:12px;}
+.results-table tr:last-child td:first-child{border-bottom-left-radius:12px; border-bottom:none;}
+.results-table tr:last-child td:last-child{border-bottom-right-radius:12px; border-bottom:none;}
+.prog-name{font-family:var(--display); font-size:17px; font-weight:700; color:var(--teal-dim); margin-bottom:4px;}
+.prog-cat{font-family:var(--body); font-weight:600; font-size:12px; color:var(--gold-dim); text-transform:uppercase; letter-spacing:.05em;}
+.winner-line{display:flex; gap:12px; align-items:center; margin-bottom:10px; font-size:14.5px;}
+.winner-line:last-child{margin-bottom:0;}
+.rank-badge{font-family:var(--mono); font-weight:600; font-size:12px; width:26px; height:26px; display:flex; align-items:center; justify-content:center; border-radius:50%; background:var(--cream); color:var(--ink);}
+.rank-1 .rank-badge{background:linear-gradient(135deg,var(--gold-light),var(--gold)); color:var(--white); box-shadow:0 4px 10px rgba(212,175,55,0.3);}
+.rank-2 .rank-badge{background:var(--teal-wash); color:var(--teal-dim);}
+.rank-3 .rank-badge{background:rgba(140,50,50,0.08); color:var(--maroon);}
+.empty-note{color:var(--ink-dim); font-size:15px; padding:40px 0; text-align:center; font-family:var(--body);}
+
+/* leaderboard */
+.lb-row{display:grid; grid-template-columns:36px 1fr 90px; gap:16px; align-items:center; padding:14px 0; border-bottom:1px solid var(--line);}
+.lb-rank{font-family:var(--display); font-size:22px; color:var(--ink-dim); font-weight:700;}
+.lb-rank.top{color:var(--gold-dim);}
+.lb-name{font-weight:600; font-size:15.5px; margin-bottom:8px;}
+.lb-bar-track{height:8px; border-radius:5px; background:var(--cream-deep); overflow:hidden;}
+.lb-bar-fill{height:100%; border-radius:5px; background:linear-gradient(90deg,var(--teal),var(--gold-light)); width:0; transition:width 1.1s cubic-bezier(.2,.8,.2,1);}
+.lb-points{font-family:var(--mono); text-align:right; color:var(--gold-dim); font-size:15px; font-weight:600;}
+
+/* lookup */
+.lookup-box{display:flex; gap:12px; max-width:520px; margin:0 auto 8px;}
+.result-card{
+  max-width:640px; margin:30px auto 0; border:1px solid rgba(212,175,55,0.3); border-radius:24px; padding:40px;
+  background:linear-gradient(to bottom, var(--white), rgba(255,255,255,0.8));
+  backdrop-filter:blur(16px);
+  position:relative;
+  box-shadow: 0 30px 60px rgba(7,43,32,0.1), inset 0 2px 0 rgba(255,255,255,0.8);
+}
+.result-card::before{
+  content:''; position:absolute; inset:0; border-radius:24px; padding:2px;
+  background:linear-gradient(135deg, var(--gold-light), transparent);
+  -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite:xor; mask-composite:exclude; pointer-events:none;
+}
+.result-card .rc-head{text-align:center; border-bottom:1px solid rgba(15,76,58,0.1); padding-bottom:24px; margin-bottom:24px;}
+.result-card .rc-head h3{font-size:28px; color:var(--teal-dim);}
+.result-card .rc-head p{color:var(--gold-dim); font-family:var(--body); font-weight:600; text-transform:uppercase; letter-spacing:.1em; font-size:12px; margin-top:8px;}
+.rc-item{display:flex; justify-content:space-between; align-items:center; padding:11px 0; border-bottom:1px solid var(--line); gap:12px;}
+.rc-item:last-child{border-bottom:none;}
+.rc-total{display:flex; justify-content:space-between; margin-top:18px; padding-top:18px; border-top:1px solid var(--gold-dim); font-family:var(--display); font-size:19px; font-weight:700;}
+@media print{
+  header,.no-print{display:none !important;}
+  body{background:#fff !important; color:#111 !important;}
+  .result-card{border:1px solid #333; box-shadow:none;}
+}
+
+footer{border-top:1px solid var(--line); padding:34px 0; text-align:center; color:var(--ink-dim); font-size:13px; font-family:var(--mono);}
+
+/* ---------- admin ---------- */
+.admin-login{max-width:380px; margin:90px auto; text-align:center;}
+.admin-shell{display:grid; grid-template-columns:220px 1fr; min-height:70vh;}
+.admin-side{border-right:1px solid var(--line); padding:26px 0;}
+.admin-side button{
+  display:flex; width:100%; text-align:left; background:none; border:none; color:var(--ink-dim);
+  padding:12px 26px; font-family:var(--body); font-size:14.5px; cursor:pointer; border-left:2px solid transparent;
+}
+.admin-side button.active{color:var(--teal-dim); border-left-color:var(--teal); background:var(--teal-wash);}
+.admin-main{padding:30px 34px;}
+.admin-top{display:flex; justify-content:space-between; align-items:center; margin-bottom:24px; flex-wrap:wrap; gap:14px;}
+.admin-table{width:100%; border-collapse:collapse; font-size:14px;}
+.admin-table th{text-align:left; padding:9px 12px; font-family:var(--mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.07em; color:var(--gold-dim); border-bottom:1px solid var(--line);}
+.admin-table td{padding:11px 12px; border-bottom:1px solid var(--line);}
+.row-actions{display:flex; gap:6px;}
+.grid-2{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+.grid-3{display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px;}
+.toast{
+  position:fixed; bottom:26px; right:26px; background:var(--ink); color:var(--cream); padding:13px 20px;
+  border-radius:10px; font-weight:600; font-size:14px; box-shadow:var(--shadow); z-index:200; opacity:0; transform:translateY(10px);
+  transition:.3s;
+}
+.toast.show{opacity:1; transform:translateY(0);}
+.modal-bg{position:fixed; inset:0; background:rgba(32,48,42,0.35); backdrop-filter:blur(3px); display:flex; align-items:center; justify-content:center; z-index:150; padding:20px;}
+.modal{background:var(--white); border:1px solid var(--line); border-radius:16px; padding:30px; max-width:520px; width:100%; max-height:86vh; overflow:auto; box-shadow:var(--shadow);}
+.modal h3{margin-bottom:20px; font-size:20px;}
+.divider-star{display:flex; justify-content:center; margin:6px 0 30px; opacity:.75;}
+.hidden{display:none !important;}
+
+#adminEntry{
+  position:fixed; bottom:8px; right:10px; z-index:60;
+  width:16px; height:16px; padding:0; border:none; background:transparent;
+  color:var(--ink-dim); font-size:12px; line-height:16px; text-align:center;
+  opacity:0.18; cursor:default; transition:opacity .3s ease; border-radius:50%;
+}
+#adminEntry:hover{opacity:0.75; cursor:pointer; background:var(--gold-wash);}
+#adminEntry:focus-visible{opacity:1;}
+body.admin-mode #adminEntry{display:none;}
+
+@media (max-width: 1100px){
+  .wrap{padding:0 22px;}
+  .hero p.lead{font-size:17px; max-width:680px; margin-left:auto; margin-right:auto;}
+  .lookup-box{flex-wrap:wrap; gap:12px;}
+  .results-table th, .results-table td{padding:14px 16px;}
+  .result-card{padding:28px;}
+  .admin-main{padding:24px;}
+}
+
+@media (max-width: 880px){
+  .wrap{padding:0 18px;}
+  .hero{padding:72px 0 50px;}
+  .hero-grid{grid-template-columns:1fr;}
+  .hero h1{font-size:34px;}
+  .hero p.lead{font-size:16px;}
+  .hero-actions{flex-direction:column; align-items:center;}
+  .hero-actions .btn{width:100%; justify-content:center;}
+  .lookup-box{flex-direction:column; align-items:stretch;}
+  .block{padding:36px 0;}
+  .results-table th, .results-table td{padding:12px 14px;}
+  .result-card{padding:24px; margin:24px auto 0;}
+  .card{padding:24px;}
+  .status-banner{gap:18px; padding-top:24px;}
+  .admin-shell{grid-template-columns:1fr;}
+  .admin-side{display:flex; overflow-x:auto; border-right:none; border-bottom:1px solid var(--line); padding:14px 10px;}
+  .admin-side button{border-left:none; border-bottom:2px solid transparent; white-space:nowrap;}
+  .admin-side button.active{border-left-color:transparent; border-bottom-color:var(--teal);}
+  .grid-2,.grid-3{grid-template-columns:1fr;}
+  .admin-table th, .admin-table td{padding:10px 10px; font-size:13px;}
+}
+
+@media (max-width: 680px){
+  .wrap{padding:0 14px;}
+  .hero{padding:56px 0 40px;}
+  .hero h1{font-size:28px;}
+  .hero p.lead{font-size:15px;}
+  .hero-actions{gap:10px;}
+  .btn{font-size:14px; padding:12px 20px;}
+  .lookup-box{gap:10px;}
+  .lookup-box input{min-width:0;}
+  .block{padding:28px 0;}
+  .card{padding:20px;}
+  .result-card{padding:20px;}
+  .status-banner{gap:14px;}
+  .admin-side button{padding:10px 14px; font-size:13px;}
+  .modal{padding:20px;}
+  .modal h3{font-size:18px;}
+  .field{margin-bottom:16px;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand" style="gap: 16px;">
+      <div>
+        <span id="brandTitle" style="color: var(--teal-dim);">BUSTHANUL ARIFEEN SUNNI HIGHER SECONDARY MADRASSA</span>
+        <small>RESULT PORTAL</small>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= PUBLIC VIEW ================= -->
+<main id="publicView">
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow"><span class="dash"></span> RESULTS</div>
+        <h1 id="heroTitle">BUSTHANUL ARIFEEN SUNNI HIGHER SECONDARY MADRASSA<br><em>PAZHAYAKADAPPURAM</em></h1>
+        <p class="lead" id="heroSub"></p>
+        <div class="hero-actions">
+          <a href="#lookup" class="btn primary">Find my result</a>
+          <a href="#board" class="btn">View results board</a>
+        </div>
+        <div class="status-banner" id="heroStats"></div>
+      </div>
+      <div class="hero-star-wrap">
+        <!-- Star animation removed for premium aesthetic -->
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="lookup">
+    <div class="wrap">
+      <div class="eyebrow"><span class="dash"></span> INDIVIDUAL RESULT</div>
+      <div class="block-head"><h2>Find your result card</h2></div>
+      <div class="lookup-box">
+        <input id="lookupInput" placeholder="Enter register number (e.g. MF-014)" onkeydown="if(event.key==='Enter')doLookup()">
+        <button class="btn primary" onclick="doLookup()">Search</button>
+      </div>
+      <div id="lookupError" style="text-align:center;color:var(--maroon);font-size:13.5px;"></div>
+      <div id="lookupResultWrap"></div>
+    </div>
+  </section>
+
+  <section class="block" id="board">
+    <div class="wrap">
+      <div class="eyebrow"><span class="dash"></span> RESULTS BOARD</div>
+      <div class="block-head">
+        <h2>Programme results</h2>
+        <span class="pill">Live</span>
+      </div>
+      <div class="filters" id="categoryFilters"></div>
+      <div style="overflow-x:auto;">
+        <table class="results-table" id="resultsTable">
+          <thead><tr><th style="width:38%">Programme</th><th>Winners</th></tr></thead>
+          <tbody id="resultsTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="leaderboard">
+    <div class="wrap">
+      <div class="eyebrow"><span class="dash"></span> TEAM STANDING</div>
+      <div class="block-head"><h2>Point Table</h2></div>
+      <div class="card" id="leaderboardCard"></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap" id="footerText">Designed & Developed by CP AMEEN</div>
+  </footer>
+</main>
+
+<!-- ================= ADMIN VIEW ================= -->
+<main id="adminView" class="hidden">
+
+  <div id="adminLoginWrap" class="wrap admin-login">
+    <div style="width: 56px; height: 56px; margin: 0 auto 24px; border-radius: 16px; background: linear-gradient(135deg, var(--teal), var(--teal-dim)); display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(15,76,58,0.25);">
+      <span style="color: var(--gold); font-family: var(--display); font-weight: 800; font-size: 28px;">M</span>
+    </div>
+    <h2 style="margin-bottom:8px; color:var(--teal-dim);">Admin Log-in</h2>
+    <p style="color:var(--ink-dim); font-size:14px; margin-bottom:26px;">Enter the admin password to manage students, programmes and results.</p>
+    <div class="field" style="text-align:left;">
+      <label>Password</label>
+      <div class="password-field">
+        <input type="password" id="adminPassInput" placeholder="password" onkeydown="if(event.key==='Enter')tryLogin()">
+        <button type="button" class="password-toggle" onclick="togglePasswordVisibility('adminPassInput', this)" aria-label="Toggle password visibility">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        </button>
+      </div>
+    </div>
+    <div id="loginError" style="color:var(--maroon); font-size:13px; margin-bottom:14px;"></div>
+    <button class="btn primary" style="width:100%; justify-content:center;" onclick="tryLogin()">Sign in</button>
+  </div>
+
+  <div id="adminShell" class="admin-shell hidden">
+    <aside class="admin-side">
+      <button class="active" data-tab="dashboard" onclick="setAdminTab('dashboard')">Dashboard</button>
+      <button data-tab="students" onclick="setAdminTab('students')">Students</button>
+      <button data-tab="categories" onclick="setAdminTab('categories')">Categories</button>
+      <button data-tab="units" onclick="setAdminTab('units')">Units</button>
+      <button data-tab="programs" onclick="setAdminTab('programs')">Programmes</button>
+      <button data-tab="results" onclick="setAdminTab('results')">Results</button>
+      <button data-tab="devices" onclick="setAdminTab('devices')">Devices</button>
+      <button data-tab="settings" onclick="setAdminTab('settings')">Settings</button>
+      <button onclick="logoutAdmin()" style="margin-top:20px; color:var(--maroon);">Sign out</button>
+      <button onclick="setView('public')" style="color:var(--ink-dim);">← Public site</button>
+    </aside>
+    <div class="admin-main" id="adminMain"></div>
+  </div>
+</main>
+
+<div id="modalRoot"></div>
+<div class="toast" id="toast"></div>
+<button id="adminEntry" onclick="setView('admin')" title="Admin" aria-label="Admin">•</button>
+
+<script>
+/* ============================================================
+   STORAGE LAYER  (using browser localStorage to persist data
+   across page refreshes)
+=========================================================== */
+const PREFIX = 'meelad_';
+async function loadKey(key, fallback){
+  try{
+    const res = localStorage.getItem(PREFIX + key);
+    if(res) {
+      return JSON.parse(res);
+    } else {
+      return fallback;
+    }
+  }catch(e){
+    console.error("Storage error:", e);
+    return fallback;
+  }
+}
+async function saveKey(key, value){
+  try{
+    localStorage.setItem(PREFIX + key, JSON.stringify(value));
+  }catch(e){
+    console.error("Storage error:", e);
+  }
+}
+
+/* ============================================================
+   DEFAULT / SEED DATA
+============================================================ */
+const DEFAULT_SETTINGS = {
+  eventName: "Meelad Fest 2026",
+  orgName: "Central Madrasa Council",
+  adminPassword: "meelad2026",
+  points: { first: 5, second: 3, third: 1, groupMultiplier: 2 }
+};
+const SEED_CATEGORIES = [
+  { id:"c1", name:"Sub Junior" },
+  { id:"c2", name:"Junior" },
+  { id:"c3", name:"Senior" },
+  { id:"c4", name:"Super Senior" }
+];
+const SEED_UNITS = [
+  { id:"u1", name:"Darul Huda Madrasa" },
+  { id:"u2", name:"Noorul Islam Madrasa" },
+  { id:"u3", name:"Al Ameen Madrasa" }
+];
+const SEED_PROGRAMS = [
+  { id:"p1", name:"Mawlid Recitation", categoryId:"c2", group:false, gender:"all" },
+  { id:"p2", name:"Prophet's Life — Speech", categoryId:"c3", group:false, gender:"all" },
+  { id:"p3", name:"Qur'an Recitation", categoryId:"c1", group:false, gender:"all" },
+  { id:"p4", name:"Islamic Quiz", categoryId:"c3", group:true, gender:"all" },
+  { id:"p5", name:"Arabic Calligraphy", categoryId:"c2", group:false, gender:"all" },
+  { id:"p6", name:"Group Nasheed", categoryId:"c4", group:true, gender:"all" },
+  { id:"p7", name:"Essay Writing — Seerah", categoryId:"c3", group:false, gender:"all" }
+];
+const SEED_STUDENTS = [
+  { id:"s1", name:"Ahmad Fauzan", reg:"MF-001", unit:"Darul Huda Madrasa", categoryId:"c1", gender:"male" },
+  { id:"s2", name:"Muhammed Rayyan", reg:"MF-002", unit:"Noorul Islam Madrasa", categoryId:"c2", gender:"male" },
+  { id:"s3", name:"Fathima Zahra", reg:"MF-003", unit:"Darul Huda Madrasa", categoryId:"c3", gender:"female" },
+  { id:"s4", name:"Yusuf Kareem", reg:"MF-004", unit:"Al Ameen Madrasa", categoryId:"c3", gender:"male" },
+  { id:"s5", name:"Ayisha Nawal", reg:"MF-005", unit:"Noorul Islam Madrasa", categoryId:"c4", gender:"female" }
+];
+const SEED_RESULTS = [
+  { id:"r1", programId:"p1", winners:[{ rank:1, studentId:"s2" },{ rank:2, studentId:"s1" }] },
+  { id:"r2", programId:"p2", winners:[{ rank:1, studentId:"s3" },{ rank:2, studentId:"s4" },{ rank:3, studentId:"s2" }] },
+  { id:"r3", programId:"p3", winners:[{ rank:1, studentId:"s1" }] }
+];
+
+/* ============================================================
+   APP STATE
+============================================================ */
+let settings, categories, units, programs, students, results, devices;
+let activeCategoryFilter = "all";
+
+async function loadAll(){
+  settings   = await loadKey("settings", DEFAULT_SETTINGS);
+  categories = await loadKey("categories", SEED_CATEGORIES);
+  units      = await loadKey("units", SEED_UNITS);
+  programs   = await loadKey("programs", SEED_PROGRAMS);
+  students   = await loadKey("students", SEED_STUDENTS);
+  results    = await loadKey("results", SEED_RESULTS);
+  devices    = await loadKey("devices", []);
+}
+async function persist(key){
+  const map = { settings, categories, units, programs, students, results, devices };
+  await saveKey(key, map[key]);
+}
+
+function uid(prefix){ return prefix + "_" + Math.random().toString(36).slice(2,9); }
+function toast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(window.__toastTimer);
+  window.__toastTimer = setTimeout(()=>t.classList.remove('show'), 2200);
+}
+function catName(id){ const c = categories.find(c=>c.id===id); return c ? c.name : "—"; }
+function studentName(id){ const s = students.find(s=>s.id===id); return s ? s.name : "Unknown"; }
+function studentById(id){ return students.find(s=>s.id===id); }
+function programById(id){ return programs.find(p=>p.id===id); }
+function pointsFor(rank, isGroup){
+  const base = rank===1 ? settings.points.first : rank===2 ? settings.points.second : rank===3 ? settings.points.third : 0;
+  return isGroup ? base * (settings.points.groupMultiplier||1) : base;
+}
+
+/* ============================================================
+   VIEW SWITCHING
+============================================================ */
+function setView(view){
+  document.getElementById('publicView').classList.toggle('hidden', view!=='public');
+  document.getElementById('adminView').classList.toggle('hidden', view!=='admin');
+  document.body.classList.toggle('admin-mode', view==='admin');
+  if(view==='admin') renderAdminGate();
+}
+
+/* ============================================================
+   RENDER: BRANDING
+============================================================ */
+function renderBranding(){
+  document.getElementById('brandTitle').textContent = settings.eventName;
+  document.getElementById('heroTitle').innerHTML = `BUSTHANUL ARIFEEN SUNNI HIGHER SECONDARY MADRASSA<br><em>PAZHAYAKADAPPURAM</em>`;
+  document.getElementById('footerText').innerHTML = 'Designed & Developed by <span style="color:var(--teal-dim); font-weight:700;">CP AMEEN</span>';
+  document.title = settings.eventName + " — Results";
+}
+
+/* ============================================================
+   RENDER: HERO STATS
+============================================================ */
+function renderHeroStats(){
+  const totalProgramsWithResults = new Set(results.map(r=>r.programId)).size;
+  const el = document.getElementById('heroStats');
+  el.innerHTML = `
+    <div class="stat"><b>${students.length}</b><span>STUDENTS</span></div>
+    <div class="stat"><b>${programs.length}</b><span>PROGRAMMES</span></div>
+    <div class="stat"><b>${totalProgramsWithResults}</b><span>RESULTS DECLARED</span></div>
+    <div class="stat"><b>${new Set(students.map(s=>s.unit)).size}</b><span>PARTICIPATING UNITS</span></div>
+  `;
+}
+
+/* ============================================================
+   RENDER: RESULTS BOARD (public)
+============================================================ */
+function renderCategoryFilters(){
+  const wrap = document.getElementById('categoryFilters');
+  const chips = [{id:"all", name:"All Categories"}, ...categories];
+  wrap.innerHTML = chips.map(c=>`<button class="chip ${activeCategoryFilter===c.id?'active':''}" onclick="filterCategory('${c.id}')">${c.name}</button>`).join('');
+}
+function filterCategory(id){ activeCategoryFilter = id; renderCategoryFilters(); renderResultsBoard(); }
+
+function renderResultsBoard(){
+  const tbody = document.getElementById('resultsTableBody');
+  let visiblePrograms = programs.filter(p => activeCategoryFilter==='all' || p.categoryId===activeCategoryFilter);
+  const rows = visiblePrograms.map(p=>{
+    const r = results.find(r=>r.programId===p.id);
+    let winnersHtml;
+    if(!r || r.winners.length===0){
+      winnersHtml = `<span style="color:var(--ink-dim); font-size:13px;">Not yet declared</span>`;
+    } else {
+      winnersHtml = [...r.winners].sort((a,b)=>a.rank-b.rank).map(w=>{
+        const st = studentById(w.studentId);
+        const cls = w.rank===1?'rank-1':w.rank===2?'rank-2':'rank-3';
+        const medal = w.rank===1?'1':w.rank===2?'2':'3';
+        return `<div class="winner-line ${cls}"><span class="rank-badge">${medal}</span><span style="font-weight:600; color:var(--ink);">${st?st.name:'—'}</span><span style="color:var(--ink-dim); font-size:13.5px;">· ${st?st.unit:''}</span></div>`;
+      }).join('');
+    }
+    const trAttr = r && r.winners.length ? `style="cursor:pointer;" onclick="openPublicResultPopup('${p.id}')"` : '';
+    return `<tr ${trAttr}><td><div class="prog-name">${p.name}</div><div class="prog-cat">${catName(p.categoryId)}${p.group?' · Group Item':''}</div></td><td>${winnersHtml}</td></tr>`;
+  }).join('');
+  tbody.innerHTML = rows || `<tr><td colspan="2"><div class="empty-note">No programmes in this category yet.</div></td></tr>`;
+}
+
+function openPublicResultPopup(programId){
+  const p = programById(programId);
+  const r = results.find(r=>r.programId===programId);
+  if(!p || !r || !r.winners.length) return;
+  
+  let winnersHtml = [...r.winners].sort((a,b)=>a.rank-b.rank).map(w=>{
+    const st = studentById(w.studentId);
+    const cls = w.rank===1?'rank-1':w.rank===2?'rank-2':'rank-3';
+    const medal = w.rank===1?'1':w.rank===2?'2':'3';
+    return `<div class="winner-line ${cls}"><span class="rank-badge">${medal}</span><span style="font-weight:600; color:var(--ink);">${st?st.name:'—'}</span><span style="color:var(--ink-dim); font-size:13.5px;">· ${st?st.unit:''}</span></div>`;
+  }).join('');
+
+  showModal(`
+    <div style="text-align:center; padding-bottom:16px; border-bottom:1px solid var(--line); margin-bottom:20px;">
+      <h3 style="color:var(--teal-dim); font-size:24px; margin-bottom:4px;">${p.name}</h3>
+      <p style="color:var(--gold-dim); font-family:var(--body); font-weight:600; text-transform:uppercase; font-size:12px; margin:0;">
+        ${catName(p.categoryId)} ${p.group?'· Group Item':''}
+      </p>
+    </div>
+    ${r.photo ? `<div style="text-align:center; margin-bottom:20px;"><img src="${r.photo}" style="max-height:220px; border-radius:12px; border:2px solid var(--gold-wash);"></div>` : ''}
+    <div style="background:var(--cream); border-radius:12px; padding:20px; margin-bottom:24px;">
+      ${winnersHtml}
+    </div>
+    <div style="text-align:center;">
+      <button class="btn primary" onclick="downloadPoster('${p.id}')">Download Poster</button>
+      <button class="btn" style="margin-left:10px;" onclick="closeModal()">Close</button>
+    </div>
+  `);
+}
+
+function downloadPoster(programId) {
+  const p = programById(programId);
+  const r = results.find(r=>r.programId===programId);
+  if(!p || !r) return;
+  
+  const canvas = document.createElement('canvas');
+  canvas.width = 1080;
+  canvas.height = 1080;
+  const ctx = canvas.getContext('2d');
+  
+  ctx.fillStyle = '#0f4c3a';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  
+  ctx.strokeStyle = '#d4af37';
+  ctx.lineWidth = 8;
+  ctx.strokeRect(40, 40, canvas.width - 80, canvas.height - 80);
+  ctx.lineWidth = 2;
+  ctx.strokeRect(50, 50, canvas.width - 100, canvas.height - 100);
+
+  const drawText = (text, x, y, font, color, align='center') => {
+    ctx.font = font;
+    ctx.fillStyle = color;
+    ctx.textAlign = align;
+    ctx.fillText(text, x, y);
+  };
+  
+  drawText(settings.eventName, canvas.width/2, 140, 'bold 48px Outfit, sans-serif', '#d4af37');
+  drawText('OFFICIAL RESULT', canvas.width/2, 180, '600 24px "Plus Jakarta Sans", sans-serif', '#ebd07d');
+  
+  drawText(p.name, canvas.width/2, 320, 'bold 72px Outfit, sans-serif', '#ffffff');
+  drawText(catName(p.categoryId).toUpperCase(), canvas.width/2, 370, '600 28px "Plus Jakarta Sans", sans-serif', '#ebd07d');
+  
+  let startY = 480;
+  
+  const drawWinners = () => {
+    const winners = [...r.winners].sort((a,b)=>a.rank-b.rank);
+    winners.forEach((w, i) => {
+      const st = studentById(w.studentId);
+      if(!st) return;
+      const y = startY + (i * 120);
+      
+      ctx.fillStyle = w.rank===1 ? '#d4af37' : w.rank===2 ? '#1b7057' : '#8c3232';
+      ctx.beginPath();
+      ctx.arc(180, y, 36, 0, Math.PI*2);
+      ctx.fill();
+      
+      drawText(w.rank.toString(), 180, y+12, 'bold 32px "Fira Code", monospace', '#ffffff');
+      drawText(st.name, 250, y, 'bold 42px Outfit, sans-serif', '#ffffff', 'left');
+      drawText(st.unit, 250, y+35, '500 24px "Plus Jakarta Sans", sans-serif', '#ebd07d', 'left');
+    });
+    
+    drawText(settings.orgName, canvas.width/2, canvas.height - 80, '500 22px "Plus Jakarta Sans", sans-serif', '#ebd07d');
+    
+    const link = document.createElement('a');
+    link.download = `Result_${p.name.replace(/ /g,'_')}.png`;
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+  };
+
+  if(r.photo){
+    const img = new Image();
+    img.crossOrigin = "Anonymous";
+    img.onload = () => {
+      const size = 320;
+      const ix = canvas.width/2 - size/2;
+      const iy = 420;
+      
+      const scale = Math.max(size/img.width, size/img.height);
+      const w = img.width * scale;
+      const h = img.height * scale;
+      const offsetX = (size - w) / 2;
+      const offsetY = (size - h) / 2;
+      
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(ix + size/2, iy + size/2, size/2, 0, Math.PI*2);
+      ctx.clip();
+      ctx.drawImage(img, ix + offsetX, iy + offsetY, w, h);
+      ctx.restore();
+      
+      ctx.beginPath();
+      ctx.arc(ix + size/2, iy + size/2, size/2, 0, Math.PI*2);
+      ctx.lineWidth = 6;
+      ctx.strokeStyle = '#d4af37';
+      ctx.stroke();
+      
+      startY = iy + size + 80;
+      drawWinners();
+    };
+    img.src = r.photo;
+  } else {
+    startY = 500;
+    drawWinners();
+  }
+}
+
+/* ============================================================
+   RENDER: LEADERBOARD
+============================================================ */
+function computeUnitPoints(){
+  const totals = {};
+  results.forEach(r=>{
+    const prog = programById(r.programId);
+    if(!prog) return;
+    r.winners.forEach(w=>{
+      const st = studentById(w.studentId);
+      if(!st) return;
+      const pts = pointsFor(w.rank, prog.group);
+      totals[st.unit] = (totals[st.unit]||0) + pts;
+    });
+  });
+  return Object.entries(totals).sort((a,b)=>b[1]-a[1]);
+}
+function renderLeaderboard(){
+  const data = computeUnitPoints();
+  const card = document.getElementById('leaderboardCard');
+  if(data.length===0){ card.innerHTML = `<div class="empty-note">No points recorded yet.</div>`; return; }
+  const max = data[0][1] || 1;
+  card.innerHTML = data.map(([unit,pts],i)=>`
+    <div class="lb-row">
+      <div class="lb-rank ${i<3?'top':''}">${i+1}</div>
+      <div>
+        <div class="lb-name">${unit}</div>
+        <div class="lb-bar-track"><div class="lb-bar-fill" data-w="${(pts/max*100)}"></div></div>
+      </div>
+      <div class="lb-points">${pts} pts</div>
+    </div>`).join('');
+  setTimeout(()=>{
+    card.querySelectorAll('.lb-bar-fill').forEach(el=>{ el.style.width = el.dataset.w + '%'; });
+  }, 60);
+}
+
+/* ============================================================
+   INDIVIDUAL LOOKUP
+============================================================ */
+function doLookup(){
+  const val = document.getElementById('lookupInput').value.trim().toLowerCase();
+  const errEl = document.getElementById('lookupError');
+  const wrap = document.getElementById('lookupResultWrap');
+  errEl.textContent = ""; wrap.innerHTML = "";
+  if(!val){ errEl.textContent = "Please enter a register number."; return; }
+  const st = students.find(s=>s.reg.toLowerCase()===val);
+  if(!st){ errEl.textContent = "No student found with that register number."; return; }
+
+  const entries = [];
+  results.forEach(r=>{
+    const prog = programById(r.programId);
+    if(!prog) return;
+    const win = r.winners.find(w=>w.studentId===st.id);
+    if(win){ entries.push({ prog, rank: win.rank, points: pointsFor(win.rank, prog.group) }); }
+  });
+  const total = entries.reduce((s,e)=>s+e.points,0);
+  const rows = entries.length
+    ? entries.map(e=>{
+        const cls = e.rank===1?'rank-1':e.rank===2?'rank-2':'rank-3';
+        const label = e.rank===1?'1st Place':e.rank===2?'2nd Place':'3rd Place';
+        return `<div class="rc-item"><span>${e.prog.name}</span><span class="${cls}" style="font-family:var(--mono); font-size:13px;">${label} · ${e.points} pts</span></div>`;
+      }).join('')
+    : `<div class="empty-note">No results recorded for this student yet.</div>`;
+
+  wrap.innerHTML = `
+    <div class="result-card" id="printableCard">
+      <div class="rc-head">
+        <h3>${settings.eventName}</h3>
+        <p>${settings.orgName} · RESULT CARD</p>
+      </div>
+      <div class="rc-item"><span style="color:var(--ink-dim)">Name</span><span style="font-weight:600">${st.name}</span></div>
+      <div class="rc-item"><span style="color:var(--ink-dim)">Register No.</span><span style="font-family:var(--mono)">${st.reg}</span></div>
+      <div class="rc-item"><span style="color:var(--ink-dim)">Unit</span><span>${st.unit}</span></div>
+      <div class="rc-item"><span style="color:var(--ink-dim)">Category</span><span>${catName(st.categoryId)}</span></div>
+      <div style="margin-top:18px;">${rows}</div>
+      <div class="rc-total"><span>Total Points</span><span>${total}</span></div>
+    </div>`;
+}
+
+/* ============================================================
+   PUBLIC RENDER ALL
+============================================================ */
+function renderPublic(){
+  renderBranding();
+  renderHeroStats();
+  renderCategoryFilters();
+  renderResultsBoard();
+  renderLeaderboard();
+}
+
+/* ============================================================
+   ADMIN: AUTH
+============================================================ */
+let isAdminLoggedIn = false;
+function renderAdminGate(){
+  document.getElementById('adminLoginWrap').classList.toggle('hidden', isAdminLoggedIn);
+  document.getElementById('adminShell').classList.toggle('hidden', !isAdminLoggedIn);
+  if(isAdminLoggedIn) setAdminTab(currentAdminTab || 'dashboard');
+}
+function getDeviceLabel(){
+  const ua = navigator.userAgent || '';
+  if(/android|iphone|ipad|ipod|mobile|opera mini|iemobile/i.test(ua)) return 'Mobile';
+  if(/tablet|ipad/i.test(ua)) return 'Tablet';
+  if(/windows|macintosh|mac os|linux/i.test(ua)) return 'Desktop';
+  return 'Other device';
+}
+async function registerCurrentDevice(){
+  const ua = navigator.userAgent || 'Unknown device';
+  const deviceId = `${navigator.platform || 'unknown'}::${ua}`;
+  const label = getDeviceLabel();
+  const now = new Date().toLocaleString();
+  const existing = devices.find(d => d.id === deviceId);
+  if(existing){
+    existing.name = label;
+    existing.type = label;
+    existing.isActive = true;
+    existing.lastSeen = now;
+    existing.lastSeenAt = Date.now();
+  } else {
+    devices.push({ id: deviceId, name: label, type: label, isActive: true, loggedInAt: now, lastSeen: now, lastSeenAt: Date.now() });
+  }
+  await persist('devices');
+}
+async function markCurrentDeviceInactive(){
+  const ua = navigator.userAgent || 'Unknown device';
+  const deviceId = `${navigator.platform || 'unknown'}::${ua}`;
+  const existing = devices.find(d => d.id === deviceId);
+  if(existing){
+    existing.isActive = false;
+    existing.lastSeen = new Date().toLocaleString();
+    existing.lastSeenAt = Date.now();
+    await persist('devices');
+  }
+}
+async function tryLogin(){
+  const val = document.getElementById('adminPassInput').value;
+  const errEl = document.getElementById('loginError');
+  if(val === settings.adminPassword){
+    isAdminLoggedIn = true; errEl.textContent=""; document.getElementById('adminPassInput').value="";
+    await registerCurrentDevice();
+    renderAdminGate();
+  } else {
+    errEl.textContent = "Incorrect password. Please try again.";
+  }
+}
+async function logoutAdmin(){ isAdminLoggedIn = false; await markCurrentDeviceInactive(); renderAdminGate(); }
+
+/* ============================================================
+   ADMIN: TAB ROUTING
+============================================================ */
+let currentAdminTab = 'dashboard';
+function setAdminTab(tab){
+  currentAdminTab = tab;
+  document.querySelectorAll('.admin-side button[data-tab]').forEach(b=>b.classList.toggle('active', b.dataset.tab===tab));
+  const main = document.getElementById('adminMain');
+  if(tab==='dashboard') main.innerHTML = adminDashboardHtml();
+  if(tab==='students') { main.innerHTML = adminStudentsHtml(); }
+  if(tab==='categories') { main.innerHTML = adminCategoriesHtml(); }
+  if(tab==='units') { main.innerHTML = adminUnitsHtml(); }
+  if(tab==='programs') { main.innerHTML = adminProgramsHtml(); }
+  if(tab==='results') { main.innerHTML = adminResultsHtml(); }
+  if(tab==='devices') { main.innerHTML = adminDevicesHtml(); }
+  if(tab==='settings') { main.innerHTML = adminSettingsHtml(); }
+}
+
+/* ---------- Dashboard ---------- */
+function adminDashboardHtml(){
+  const declared = new Set(results.map(r=>r.programId)).size;
+  return `
+    <div class="admin-top"><h2>Dashboard</h2></div>
+    <div class="grid-3">
+      <div class="card"><div class="eyebrow">STUDENTS</div><h3 style="font-size:34px; margin-top:10px;">${students.length}</h3></div>
+      <div class="card"><div class="eyebrow">PROGRAMMES</div><h3 style="font-size:34px; margin-top:10px;">${programs.length}</h3></div>
+      <div class="card"><div class="eyebrow">RESULTS DECLARED</div><h3 style="font-size:34px; margin-top:10px;">${declared} / ${programs.length}</h3></div>
+    </div>
+    `;
+}
+
+/* ---------- Students ---------- */
+function adminStudentsHtml(){
+  const rows = students.map(s=>`
+    <tr>
+      <td>${s.name}</td><td style="font-family:var(--mono)">${s.reg}</td><td>${s.unit}</td><td>${catName(s.categoryId)}</td><td>${String(s.gender||'all').toUpperCase()}</td>
+      <td class="row-actions">
+        <button class="btn small" onclick="openStudentModal('${s.id}')">Edit</button>
+        <button class="btn small danger" onclick="deleteStudent('${s.id}')">Delete</button>
+      </td>
+    </tr>`).join('');
+  return `
+    <div class="admin-top"><h2>Students</h2><button class="btn primary" onclick="openStudentModal()">+ Add student</button></div>
+    <div style="overflow-x:auto;">
+    <table class="admin-table">
+      <thead><tr><th>Name</th><th>Register No.</th><th>Unit</th><th>Category</th><th>Gender</th><th></th></tr></thead>
+      <tbody>${rows || `<tr><td colspan="6"><div class="empty-note">No students yet.</div></td></tr>`}</tbody>
+    </table>
+    </div>`;
+}
+function openStudentModal(id){
+  const s = id ? studentById(id) : null;
+  const catOptions = categories.map(c=>`<option value="${c.id}" ${s&&s.categoryId===c.id?'selected':''}>${c.name}</option>`).join('');
+  const unitOptions = units.map(u=>`<option value="${u.name}" ${s&&s.unit===u.name?'selected':''}>${u.name}</option>`).join('');
+  showModal(`
+    <h3>${s?'Edit student':'Add student'}</h3>
+    <div class="field"><label>Full name</label><input id="m_name" value="${s?s.name:''}" placeholder="e.g. Ahmad Fauzan"></div>
+    <div class="grid-2">
+      <div class="field"><label>Register number</label><input id="m_reg" value="${s?s.reg:''}" placeholder="e.g. MF-006"></div>
+      <div class="field"><label>Category</label><select id="m_cat">${catOptions}</select></div>
+    </div>
+    <div class="field"><label>Madrasa / Unit</label><select id="m_unit">${unitOptions}</select></div>
+    <div class="field"><label>Gender</label><select id="m_gender">
+        <option value="male" ${s&&s.gender==='male'?'selected':''}>Male</option>
+        <option value="female" ${s&&s.gender==='female'?'selected':''}>Female</option>
+        <option value="all" ${s&&s.gender==='all'?'selected':''}>All</option>
+      </select></div>
+    <div style="display:flex; gap:10px; justify-content:flex-end; margin-top:10px;">
+      <button class="btn" onclick="closeModal()">Cancel</button>
+      <button class="btn primary" onclick="saveStudent('${id||''}')">Save</button>
+    </div>
+  `);
+}
+async function saveStudent(id){
+  const name = document.getElementById('m_name').value.trim();
+  const reg = document.getElementById('m_reg').value.trim();
+  const unit = document.getElementById('m_unit').value.trim();
+  const categoryId = document.getElementById('m_cat').value;
+  const gender = document.getElementById('m_gender').value;
+  if(!name || !reg || !unit || !gender){ toast("Please fill in all fields"); return; }
+  if(id){
+    const s = studentById(id); s.name=name; s.reg=reg; s.unit=unit; s.categoryId=categoryId; s.gender=gender;
+  } else {
+    if(students.some(s=>s.reg.toLowerCase()===reg.toLowerCase())){ toast("That register number is already used"); return; }
+    students.push({ id: uid('s'), name, reg, unit, categoryId, gender });
+  }
+  await persist('students');
+  closeModal(); toast("Student saved"); setAdminTab('students'); renderPublic();
+}
+async function deleteStudent(id){
+  if(!confirm("Delete this student? This cannot be undone.")) return;
+  students = students.filter(s=>s.id!==id);
+  results.forEach(r=> r.winners = r.winners.filter(w=>w.studentId!==id));
+  await persist('students'); await persist('results');
+  toast("Student deleted"); setAdminTab('students'); renderPublic();
+}
+
+/* ---------- Categories ---------- */
+function adminCategoriesHtml(){
+  const rows = categories.map(c=>`
+    <tr><td>${c.name}</td>
+    <td class="row-actions">
+      <button class="btn small" onclick="openCategoryModal('${c.id}')">Edit</button>
+      <button class="btn small danger" onclick="deleteCategory('${c.id}')">Delete</button>
+    </td></tr>`).join('');
+  return `
+    <div class="admin-top"><h2>Categories</h2><button class="btn primary" onclick="openCategoryModal()">+ Add category</button></div>
+    <table class="admin-table"><thead><tr><th>Name</th><th></th></tr></thead>
+    <tbody>${rows || `<tr><td colspan="2"><div class="empty-note">No categories yet.</div></td></tr>`}</tbody></table>`;
+}
+function openCategoryModal(id){
+  const c = id ? categories.find(c=>c.id===id) : null;
+  showModal(`
+    <h3>${c?'Edit category':'Add category'}</h3>
+    <div class="field"><label>Category name</label><input id="m_catname" value="${c?c.name:''}" placeholder="e.g. Junior"></div>
+    <div style="display:flex; gap:10px; justify-content:flex-end;">
+      <button class="btn" onclick="closeModal()">Cancel</button>
+      <button class="btn primary" onclick="saveCategory('${id||''}')">Save</button>
+    </div>`);
+}
+async function saveCategory(id){
+  const name = document.getElementById('m_catname').value.trim();
+  if(!name){ toast("Please enter a name"); return; }
+  if(id){ categories.find(c=>c.id===id).name = name; }
+  else { categories.push({ id: uid('c'), name }); }
+  await persist('categories'); closeModal(); toast("Category saved"); setAdminTab('categories'); renderPublic();
+}
+async function deleteCategory(id){
+  if(programs.some(p=>p.categoryId===id) || students.some(s=>s.categoryId===id)){
+    toast("Can't delete — students or programmes use this category"); return;
+  }
+  if(!confirm("Delete this category?")) return;
+  categories = categories.filter(c=>c.id!==id);
+  await persist('categories'); toast("Category deleted"); setAdminTab('categories'); renderPublic();
+}
+
+/* ---------- Units ---------- */
+function adminUnitsHtml(){
+  const rows = units.map(u=>`
+    <tr><td>${u.name}</td>
+    <td class="row-actions">
+      <button class="btn small" onclick="openUnitModal('${u.id}')">Edit</button>
+      <button class="btn small danger" onclick="deleteUnit('${u.id}')">Delete</button>
+    </td></tr>`).join('');
+  return `
+    <div class="admin-top"><h2>Units</h2><button class="btn primary" onclick="openUnitModal()">+ Add unit</button></div>
+    <table class="admin-table"><thead><tr><th>Name</th><th></th></tr></thead>
+    <tbody>${rows || `<tr><td colspan="2"><div class="empty-note">No units yet.</div></td></tr>`}</tbody></table>`;
+}
+function openUnitModal(id){
+  const u = id ? units.find(u=>u.id===id) : null;
+  showModal(`
+    <h3>${u?'Edit unit':'Add unit'}</h3>
+    <div class="field"><label>Team name</label><input id="m_unitname" value="${u?u.name:''}" placeholder="Team"></div>
+    <div style="display:flex; gap:10px; justify-content:flex-end;">
+      <button class="btn" onclick="closeModal()">Cancel</button>
+      <button class="btn primary" onclick="saveUnit('${id||''}')">Save</button>
+    </div>`);
+}
+async function saveUnit(id){
+  const name = document.getElementById('m_unitname').value.trim();
+  if(!name){ toast("Please enter a name"); return; }
+  if(id){
+    const oldName = units.find(u=>u.id===id).name;
+    units.find(u=>u.id===id).name = name;
+    students.forEach(s => { if(s.unit === oldName) s.unit = name; });
+    await persist('students');
+  }
+  else { units.push({ id: uid('u'), name }); }
+  await persist('units'); closeModal(); toast("Unit saved"); setAdminTab('units'); renderPublic();
+}
+async function deleteUnit(id){
+  const u = units.find(u=>u.id===id);
+  if(students.some(s=>s.unit===u.name)){
+    toast("Can't delete — students belong to this unit"); return;
+  }
+  if(!confirm("Delete this unit?")) return;
+  units = units.filter(u=>u.id!==id);
+  await persist('units'); toast("Unit deleted"); setAdminTab('units'); renderPublic();
+}
+
+/* ---------- Programs ---------- */
+function adminProgramsHtml(){
+  const rows = programs.map(p=>`
+    <tr><td>${p.name}</td><td>${catName(p.categoryId)}</td><td>${p.group?'Group':'Individual'}</td><td>${String(p.gender||'all').toUpperCase()}</td>
+    <td class="row-actions">
+      <button class="btn small" onclick="openProgramModal('${p.id}')">Edit</button>
+      <button class="btn small danger" onclick="deleteProgram('${p.id}')">Delete</button>
+    </td></tr>`).join('');
+  return `
+    <div class="admin-top"><h2>Programmes</h2><button class="btn primary" onclick="openProgramModal()">+ Add programme</button></div>
+    <div style="overflow-x:auto;">
+    <table class="admin-table"><thead><tr><th>Name</th><th>Category</th><th>Type</th><th>Gender</th><th></th></tr></thead>
+    <tbody>${rows || `<tr><td colspan="5"><div class="empty-note">No programmes yet.</div></td></tr>`}</tbody></table>
+    </div>`;
+}
+function openProgramModal(id){
+  const p = id ? programById(id) : null;
+  const catOptions = categories.map(c=>`<option value="${c.id}" ${p&&p.categoryId===c.id?'selected':''}>${c.name}</option>`).join('');
+  showModal(`
+    <h3>${p?'Edit programme':'Add programme'}</h3>
+    <div class="field"><label>Programme name</label><input id="m_pname" value="${p?p.name:''}" placeholder="e.g. Mawlid Recitation"></div>
+    <div class="grid-2">
+      <div class="field"><label>Category</label><select id="m_pcat">${catOptions}</select></div>
+      <div class="field"><label>Type</label>
+        <select id="m_ptype">
+          <option value="false" ${p&&!p.group?'selected':''}>Individual</option>
+          <option value="true" ${p&&p.group?'selected':''}>Group</option>
+        </select>
+      </div>
+    </div>
+    <div class="field"><label>Gender</label><select id="m_pgender">
+        <option value="all" ${p&&p.gender==='all'?'selected':''}>All</option>
+        <option value="male" ${p&&p.gender==='male'?'selected':''}>Male</option>
+        <option value="female" ${p&&p.gender==='female'?'selected':''}>Female</option>
+      </select></div>
+    <div style="display:flex; gap:10px; justify-content:flex-end;">
+      <button class="btn" onclick="closeModal()">Cancel</button>
+      <button class="btn primary" onclick="saveProgram('${id||''}')">Save</button>
+    </div>`);
+}
+async function saveProgram(id){
+  const name = document.getElementById('m_pname').value.trim();
+  const categoryId = document.getElementById('m_pcat').value;
+  const group = document.getElementById('m_ptype').value === 'true';
+  const gender = document.getElementById('m_pgender').value;
+  if(!name){ toast("Please enter a programme name"); return; }
+  if(id){ const p = programById(id); p.name=name; p.categoryId=categoryId; p.group=group; p.gender=gender; }
+  else { programs.push({ id: uid('p'), name, categoryId, group, gender }); }
+  await persist('programs'); closeModal(); toast("Programme saved"); setAdminTab('programs'); renderPublic();
+}
+async function deleteProgram(id){
+  if(!confirm("Delete this programme and its results?")) return;
+  programs = programs.filter(p=>p.id!==id);
+  results = results.filter(r=>r.programId!==id);
+  await persist('programs'); await persist('results');
+  toast("Programme deleted"); setAdminTab('programs'); renderPublic();
+}
+
+/* ---------- Results entry ---------- */
+function adminResultsHtml(){
+  const rows = programs.map(p=>{
+    const r = results.find(r=>r.programId===p.id);
+    const winnersText = r && r.winners.length
+      ? r.winners.map(w=>`${w.rank===1?'1st':w.rank===2?'2nd':'3rd'}: ${studentName(w.studentId)}`).join(' · ')
+      : '<span style="color:var(--ink-dim)">Not declared</span>';
+    return `<tr><td>${p.name}<div class="prog-cat">${catName(p.categoryId)}${p.group?' · Group':''}</div></td>
+      <td>${winnersText}</td>
+      <td class="row-actions"><button class="btn small" onclick="openResultModal('${p.id}')">${r?'Edit':'Declare'}</button></td></tr>`;
+  }).join('');
+  return `
+    <div class="admin-top"><h2>Results entry</h2></div>
+    <div style="overflow-x:auto;">
+    <table class="admin-table"><thead><tr><th style="width:32%">Programme</th><th>Winners</th><th></th></tr></thead>
+    <tbody>${rows || `<tr><td colspan="3"><div class="empty-note">Add programmes first.</div></td></tr>`}</tbody></table>
+    </div>`;
+}
+function openResultModal(programId){
+  const p = programById(programId);
+  const r = results.find(r=>r.programId===programId);
+  const programGender = p.gender || 'all';
+  const eligible = students.filter(s=>
+    s.categoryId===p.categoryId && (programGender==='all' || s.gender===programGender)
+  );
+  const pickFor = (rank)=>{
+    const win = r ? r.winners.find(w=>w.rank===rank) : null;
+    const opts = ['<option value="">— none —</option>', ...eligible.map(s=>`<option value="${s.id}" ${win&&win.studentId===s.id?'selected':''}>${s.name} (${s.reg})</option>`)];
+    return opts.join('');
+  };
+  showModal(`
+    <h3>Declare result — ${p.name}</h3>
+    <p style="color:var(--ink-dim); font-size:13px; margin-top:-12px; margin-bottom:20px;">Only students in "${catName(p.categoryId)}" are listed. Leave a rank as "none" to skip it.</p>
+    <div class="field"><label>1st place (${pointsFor(1,p.group)} pts)</label><select id="m_r1">${pickFor(1)}</select></div>
+    <div class="field"><label>2nd place (${pointsFor(2,p.group)} pts)</label><select id="m_r2">${pickFor(2)}</select></div>
+    <div class="field"><label>3rd place (${pointsFor(3,p.group)} pts)</label><select id="m_r3">${pickFor(3)}</select></div>
+    <div class="field"><label>Photo (Optional, for Poster)</label>
+      <input type="file" id="m_rphoto" accept="image/*" onchange="previewResultPhoto(this)">
+      <img id="m_rphoto_preview" src="${r&&r.photo?r.photo:''}" style="margin-top:10px; max-height:180px; max-width:100%; border-radius:12px; display:${r&&r.photo?'block':'none'}">
+    </div>
+    <div style="display:flex; gap:10px; justify-content:flex-end;">
+      <button class="btn" onclick="closeModal()">Cancel</button>
+      <button class="btn primary" onclick="saveResult('${programId}')">Save result</button>
+    </div>`);
+}
+function previewResultPhoto(input){
+  const file = input.files[0];
+  if(file){
+    const reader = new FileReader();
+    reader.onload = e => {
+      const img = document.getElementById('m_rphoto_preview');
+      img.src = e.target.result;
+      img.style.display = 'block';
+    };
+    reader.readAsDataURL(file);
+  }
+}
+async function saveResult(programId){
+  const v1 = document.getElementById('m_r1').value;
+  const v2 = document.getElementById('m_r2').value;
+  const v3 = document.getElementById('m_r3').value;
+  const winners = [];
+  if(v1) winners.push({ rank:1, studentId:v1 });
+  if(v2) winners.push({ rank:2, studentId:v2 });
+  if(v3) winners.push({ rank:3, studentId:v3 });
+  
+  const imgEl = document.getElementById('m_rphoto_preview');
+  const photo = imgEl.src && imgEl.src.startsWith('data:') ? imgEl.src : null;
+  
+  let r = results.find(r=>r.programId===programId);
+  if(r){ 
+    r.winners = winners; 
+    if(photo || document.getElementById('m_rphoto').files.length > 0) r.photo = photo; 
+  } else { 
+    results.push({ id: uid('r'), programId, winners, photo }); 
+  }
+  await persist('results'); closeModal(); toast("Result saved"); setAdminTab('results'); renderPublic();
+}
+
+/* ---------- Devices ---------- */
+function adminDevicesHtml(){
+  const activeDevices = (devices || []).filter(d => d.isActive).slice().sort((a,b)=>b.lastSeenAt-a.lastSeenAt);
+  const rows = activeDevices.map(d=>`
+    <tr>
+      <td>${d.name || 'Device'}</td>
+      <td>${d.type || 'Device'}</td>
+      <td><span class="pill gold-fill">Logged in</span></td>
+      <td>${d.lastSeen || d.loggedInAt || '—'}</td>
+      <td class="row-actions">
+        <button class="btn small danger" onclick="revokeDevice('${d.id}')">Revoke</button>
+      </td>
+    </tr>`).join('');
+  return `
+    <div class="admin-top"><h2>Devices</h2><span class="pill">Logged-in sessions</span></div>
+    <div style="overflow-x:auto;">
+    <table class="admin-table"><thead><tr><th>Device</th><th>Type</th><th>Status</th><th>Last Seen</th><th></th></tr></thead>
+    <tbody>${rows || `<tr><td colspan="5"><div class="empty-note">No logged-in devices right now.</div></td></tr>`}</tbody></table>
+    </div>`;
+}
+async function revokeDevice(id){
+  if(!confirm("Revoke this device access?")) return;
+  const currentDeviceId = `${navigator.platform || 'unknown'}::${navigator.userAgent || 'Unknown device'}`;
+  const target = (devices || []).find(d=>d.id===id);
+  if(target && target.id === currentDeviceId){
+    await markCurrentDeviceInactive();
+    isAdminLoggedIn = false;
+    renderAdminGate();
+    toast("This device has been logged out");
+    return;
+  }
+  devices = (devices || []).filter(d=>d.id!==id);
+  await persist('devices');
+  toast("Device revoked");
+  setAdminTab('devices');
+}
+
+/* ---------- Settings ---------- */
+function adminSettingsHtml(){
+  return `
+    <div class="admin-top"><h2>Settings</h2></div>
+    <div class="card" style="margin-bottom:18px;">
+      <div class="eyebrow" style="margin-bottom:16px;">EVENT DETAILS</div>
+      <div class="grid-2">
+        <div class="field"><label>Event name</label><input id="s_eventname" value="${settings.eventName}"></div>
+        <div class="field"><label>Organisation</label><input id="s_orgname" value="${settings.orgName}"></div>
+      </div>
+    </div>
+    <div class="card" style="margin-bottom:18px;">
+      <div class="eyebrow" style="margin-bottom:16px;">POINTS SYSTEM</div>
+      <div class="grid-3">
+        <div class="field"><label>1st place points</label><input type="number" id="s_p1" value="${settings.points.first}"></div>
+        <div class="field"><label>2nd place points</label><input type="number" id="s_p2" value="${settings.points.second}"></div>
+        <div class="field"><label>3rd place points</label><input type="number" id="s_p3" value="${settings.points.third}"></div>
+      </div>
+      <div class="field"><label>Group item multiplier</label><input type="number" id="s_pg" value="${settings.points.groupMultiplier}"></div>
+    </div>
+    <div class="card" style="margin-bottom:18px;">
+      <div class="eyebrow" style="margin-bottom:16px;">ADMIN PASSWORD</div>
+      <div class="field"><label>New password (leave blank to keep current)</label>
+        <div class="password-field">
+          <input type="password" id="s_pass" placeholder="••••••••">
+          <button type="button" class="password-toggle" onclick="togglePasswordVisibility('s_pass', this)" aria-label="Toggle password visibility">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex; flex-wrap:wrap; gap:12px; align-items:center;">
+      <button class="btn primary" onclick="saveSettings()">Save settings</button>
+      <button class="btn danger" onclick="wipeAllData()">Wipe all data</button>
+      <span style="color:var(--ink-dim); font-size:12.5px;">Note: this is a lightweight password gate for editorial control, not a secure login system — don't reuse a sensitive password here.</span>
+    </div>
+  `;
+}
+function togglePasswordVisibility(inputId, btn){
+  const input = document.getElementById(inputId);
+  if(!input) return;
+  const isPassword = input.type === 'password';
+  input.type = isPassword ? 'text' : 'password';
+  btn.innerHTML = isPassword
+    ? `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.94 10.94 0 0 1 12 20c-7 0-11-8-11-8a21.86 21.86 0 0 1 5.06-6.94"/><path d="M1 1l22 22"/><path d="M9.88 9.88a3 3 0 0 0 4.24 4.24"/><path d="M14.12 14.12A3 3 0 0 1 9.88 9.88"/></svg>`
+    : `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>`;
+}
+
+async function saveSettings(){
+  settings.eventName = document.getElementById('s_eventname').value.trim() || settings.eventName;
+  settings.orgName = document.getElementById('s_orgname').value.trim() || settings.orgName;
+  settings.points.first = Number(document.getElementById('s_p1').value)||0;
+  settings.points.second = Number(document.getElementById('s_p2').value)||0;
+  settings.points.third = Number(document.getElementById('s_p3').value)||0;
+  settings.points.groupMultiplier = Number(document.getElementById('s_pg').value)||1;
+  const newPass = document.getElementById('s_pass').value.trim();
+  if(newPass) settings.adminPassword = newPass;
+  await persist('settings');
+  toast("Settings saved"); renderPublic();
+}
+
+async function wipeAllData(){
+  if(!confirm("Erase all app data and reset everything to defaults? This cannot be undone.")) return;
+  Object.keys(localStorage).forEach(key => {
+    if(key.startsWith(PREFIX)) localStorage.removeItem(key);
+  });
+  await loadAll();
+  renderPublic();
+  toast("All data wiped and reset");
+}
+
+/* ============================================================
+   MODAL
+============================================================ */
+function showModal(html){
+  document.getElementById('modalRoot').innerHTML = `<div class="modal-bg" onclick="if(event.target===this)closeModal()"><div class="modal">${html}</div></div>`;
+}
+function closeModal(){ document.getElementById('modalRoot').innerHTML = ""; }
+
+/* ============================================================
+   BOOT
+============================================================ */
+(async function init(){
+  await loadAll();
+  if(settings.adminPassword !== DEFAULT_SETTINGS.adminPassword){
+    settings.adminPassword = DEFAULT_SETTINGS.adminPassword;
+    await persist('settings');
+  }
+  renderPublic();
+})();
+</script>
+</body>
+</html>
